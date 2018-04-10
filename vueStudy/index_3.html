@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V3模板语法</title>
+</head>
+<body>
+    <div id="app">
+        <p>通过使用 v-once 指令,执行一次性地插值</p>
+        <p v-once>这个将不会改变 {{a}}</p>
+        <p>{{ a + "100"}}</p>
+        <p>{{ a + 100}}</p>
+        <p>{{a ? 'yes' : 'no'}}</p>
+        <p>{{htmlTemp}}</p>
+        <span v-html='htmlTemp'></span>
+        <p id="{{id_1}}">bindId</p>
+        <p v-bind:id="id_1">bindId</p>
+        <p v-bind:id="'test_' + id_1"></p>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        <a v-bind:href='baiduURL'>baidu</a>
+        <p>.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</p>
+        <form v-on:submit.prevent="onSubmit">...
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var data = {
+            a : 1,
+            htmlTemp : '<span style="color:red">span</span>',
+            id_1 : 'idTest',
+            isButtonDisabled :true,
+            baiduURL : 'http:www.baidu.com'
+        }
+        var vm = new Vue({
+            el   : '#app',
+            data : data,
+            methods : {
+                onSubmit : function(){
+                    alert('submit');
+                }  
+            }
+        })
+        // data.a = 2;
+    </script>
+</body>
+</html>

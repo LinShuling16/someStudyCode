@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V7列表渲染</title>
+</head>
+<body>
+    <div id='app'>
+       <p>建议尽可能在使用 v-for 时提供 key，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。</p>
+       <ul>
+           <li v-for="(item,index) in dataList">
+               {{item.name}}
+               <a href="">{{index}}</a>
+           </li>
+       </ul>
+       <!-- <p v-for="(value, key, index) in dataObj ">
+           <p>index:{{index}}</p>
+           <p>key  :{{key}}</p>
+           <p>value:{{value}}</p>
+       </p> -->
+       <ul>
+           <li v-for="(value, key, index) in dataObj ">
+              {{ index }}. {{ key }}: {{ value }}
+           </li>
+       </ul>
+       <div v-for="(value, key, index) in dataObj ">
+            {{ index }}. {{ key }}: {{ value }}    
+       </div>
+       <div>{{item}}</div>
+       <p>
+        <h1>注意</h1>
+           由于 JavaScript 的限制，Vue 不能检测以下变动的数组：
+        当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+        当你修改数组的长度时，例如：vm.items.length = newLength
+       </p>
+       <p v-for="n in evenNumbers">{{n}}</p>
+        <div>
+            <span v-for="n in 10">{{ n }} </span>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var data ={
+            isValidated : false,
+            dataList    : [
+                {name : "name_1"},
+                {name : "name_2"},
+                {name : "name_3"}
+            ],
+            dataObj   : {
+                sex  : 'b',
+                name : "naem_22",
+                age  : 22,
+            },
+            item : [1,2,3],
+            numbers : [1,2,3,4],
+            
+        }
+        var vm = new Vue({
+            el:'#app',
+            data : data,
+            methods:{
+               
+            },
+            computed : {
+                evenNumbers : function(){
+                    return this.numbers.filter(function(number){
+                        return number % 2 === 0;
+                    })
+                }
+            }
+       })
+       // vm.item[1] ='r' ;
+       Vue.set(vm.item, 2,'r');
+       // vm.item.length = 2;
+       // vm.item = 1; 
+    </script>
+</body>
+</html>

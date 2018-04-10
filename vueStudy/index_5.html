@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V5Class 与 Style 绑定</title>
+</head>
+<body>
+    <div id="app">
+        <p :class="{active : isActive}">class style_1</p>
+        <p :class="classObj">class style_2</p>
+        <p :class="classObject">class style_3</p>
+        <p :class="[class1, class2]">class style_4</p>
+        <p :style="{ color: activeColor, fontSize: fontSize + 'px'}">class style_5</p>
+        <p :style="styleObj">class style_6</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var data = {
+            a : 1,
+            // isActive : false,
+            classObj : {
+                active : true,
+                isError : false
+            },
+            isActive : true,
+            error    : {
+                type : 'fatal'
+            }, 
+            class1 : 'active',
+            class2 : 'error',
+            activeColor : 'red',
+            fontSize : 30,
+            styleObj : {
+                color    : '#ccc',
+                fontSize : '20px'
+            }
+        }
+        var vm = new Vue({
+            el   : "#app",
+            data : data,
+            computed : {
+                classObject : function(){
+                    return {
+                        active : this.isActive && !this.error,
+                        'text-danger' : this.error && this.error.type === 'fatal'
+                    }
+                }
+            },
+            methods : {
+                
+            }
+
+        })
+    </script>
+</body>
+</html>

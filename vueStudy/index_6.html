@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V6条件渲染</title>
+</head>
+<body>
+    <div id='app'>
+        <p v-if="isValidated">YES</p>
+        <p v-else>NO</p>
+        <p v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+        </p>
+        <p v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+        </p>
+        <button v-on:click="changeLoginType">change</button>
+        <p>v-show只是简单的基于CSS样式的切换，总是会渲染的。</p>
+        <p>v-if是有惰性的，如果一开始条件为假是不会渲染的。</p>
+        <p>v-for的优先级比v-if高</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var data ={
+            isValidated : false,
+            loginType   : 'username'
+        }
+        var app = new Vue({
+            el:'#app',
+            data : data,
+            methods:{
+               changeLoginType : function(){
+                    this.loginType = this.loginType === 'username' ? '' : 'username'
+               }
+            }
+       })   
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V9表单输入绑定</title>
+</head>
+<body>
+    <div id='app'>
+        <input type="text" v-model="message" value="123">
+        <p>{{message}}</p>
+        <input type="checkbox" id="checkbox" v-model='checked'>
+        <label for="checkbox">{{checked}}</label>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var data ={
+            message : '1',
+            checked : 'false',
+            checkedNames: []
+        }
+        var app = new Vue({
+            el:'#app',
+            data : data,
+            methods:{
+              
+            }
+       })   
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V91组件</title>
+</head>
+<body>
+    <div id='app'>
+       <p>注意确保在初始化根实例之前注册组件</p>
+       <p>HTML 特性是不区分大小写的。所以，当使用的不是字符串模板时，camelCase (驼峰式命名) 的 prop 需要转换为相对应的 kebab-case (短横线分隔式命名)</p>
+       <p>my-component是全局组件</p>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+       <table> 
+            <th>thth</th>
+            <!-- <my-component></my-component> -->
+            <!-- <tr is='my-component'></tr> -->
+       </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var data ={
+            counter : 0
+        }
+        Vue.component('my-component', {
+            template : '<button v-on:click="counter += 1">{{ counter}}</button>',
+            data     : function(){
+                return {
+                    counter : 0
+                };
+            }
+        })  
+        var app = new Vue({
+            el:'#app'
+       })
+    </script>
+</body>
+</html>

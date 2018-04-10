@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V8事件处理</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id='app'>
+       <span v-on:click="count += 1">Add count</span>
+       <p>The count:{{count}}</p>
+       <div :style='div1' v-on:click='clickDiv1'>
+           <div :style='div2' v-on:click.once.stop='clickDiv2'></div>
+       </div>
+       <input v-on:keyup.space='spaceEvent'>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var data ={
+            count : 0,
+            div1  : {
+                height: '120px',
+                width : '120px',
+                background : '#ccc'
+            },
+            div2  : {
+                height: '20px',
+                width : '20px',
+                background : '#c60000',
+                'line-height' :'120px',
+                margin : 'auto'
+            }
+        }
+        var app = new Vue({
+            el:'#app',
+            data : data,
+            methods:{
+               clickDiv1 : function(){
+                    alert('clickDiv1')
+               },
+               clickDiv2 : function(){
+                    alert('clickDiv2');
+               },
+               spaceEvent : function(){
+                    alert('space');
+                }
+            }
+       })   
+    </script>
+</body>
+</html>

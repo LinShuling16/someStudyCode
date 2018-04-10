@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V1</title>
+</head>
+<body>
+    <div id='app'>
+        <p>模板语法来声明式地将数据渲染进 DOM 的系统 : {{message}}</p>
+        <span v-bind:title='titleMsg'>将这个元素节点的 title 特性和 Vue 实例的 message 属性保持一致</span>
+        <p v-if="seen">控制切换一个元素是否显示</p>
+        <p>
+            <ul>
+                <li v-for='todo in todos'>
+                    {{todo.text}}
+                </li>
+            </ul>
+        </p>
+        <p>
+            <p>注意在 reverseMessage 方法中，我们更新了应用的状态，但没有触碰 DOM——所有的 DOM 操作都由 Vue 来处理，你编写的代码只需要关注逻辑层面即可。</p>
+            <p>{{message_5}}</p>
+            <button v-on:click='reversMessage'>逆转</button>
+        </p>
+        <p>
+            <p>{{message_6}}</p>
+            <input type="text" v-model="message_6">
+        </p>
+        <todo-item
+            v-for="item in groceryList"
+            v-bind:todo="item"
+            v-bind:key="item.id"
+        ></todo-item>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+       var app = new Vue({
+            el:'#app',
+            data : {
+                message   : "hello world",
+                message_5 : 'linshuling',
+                message_6 : 'message_6',
+                titleMsg  : 'this is title',
+                seen      : true,
+                todos     : [
+                    { text: '学习 JavaScript' },
+                    { text: '学习 Vue' },
+                    { text: '整个牛项目' },
+                    { text: '新项目' }
+                ],
+                groceryList: [
+                    { id: 0, text: '蔬菜' },
+                    { id: 1, text: '奶酪' },
+                    { id: 2, text: '随便其它什么人吃的东西' }
+                ],
+            },
+            methods:{
+               reversMessage : function(){
+                    this.message_5 = this.message_5.split('').reverse().join('')
+               } 
+            }
+       })
+        Vue.component('todo-item',{
+            // todo-item 组件现在接受一个
+            // "prop"，类似于一个自定义特性。
+            // 这个 prop 名为 todo。
+            props : ['todo'],
+            template : '<li>{{ todo.text}}</li>'
+        })
+       
+    </script>
+</body>
+</html>

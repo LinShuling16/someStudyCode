@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10</title>
+</head>
+<body>
+    <style style="display:block;" contenteditable='true'>
+        .t{
+            display: none;
+        }
+    </style>
+    <script style="display:block;">
+        var a = 6;
+    </script>
+    <div class="t">
+        this is test 
+    </div>
+    <div hidden>this is test</div>
+    <ul>
+        <li class="liItem">1</li>
+        <li class="liItem" style="display: none;">2 <i style="display: block;">this is i label</i></li>
+        <li class="liItem">3</li>
+        <li class="liItem">4</li>
+        <li class="liItem">5</li>
+        <li class="liItem" style="visibility:hidden;">6 <i style="visibility:visible;">this is i label</i></li>
+        <li class="liItem">7</li>
+    </ul>
+    <ol>
+        <li>ol_dispaly:none</li>
+        <li style="display: none;">ol_dispaly:none</li>
+        <li>ol_dispaly:none</li>
+    </ol>
+    <ol>
+        <li>ol_visibility:hidden</li>
+        <li style="visibility:hidden;">ol_visibility:hidden</li>
+        <li>ol_visibility:hidden</li>
+    </ol>
+    <script type="text/html" id="script">
+        <img src="1.jpg">
+        <textarea name="" id="" cols="30" rows="10">
+            <img src="1.jpg">
+        </textarea>
+    </script>
+    <script>
+        // var liLength = document.getElementsByClassName('liItem');
+        // for(var i=0; i<liLength.length; i++){
+        //     alert(i);
+        // }
+        // alert(liLength.length);
+        var script = document.getElementById('script');
+        var temp = script.innerHTML;
+        alert(temp);
+    </script>
+</body>
+</html>

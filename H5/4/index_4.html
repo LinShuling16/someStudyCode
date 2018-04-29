@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>text</title>
+    <style>
+        /* 设置placeholder样式 从 Firefox 19 开始将不再支持一个冒号的「:-moz-placeholder」伪元素，改成标准的两个冒号的「::-moz-placeholder」。今后若要兼容，开发者需要在CSS中同时书写两个伪元素。*/
+
+        /* Firefox浏览器 */
+        input::-moz-placeholder{
+            color :blue;
+        }
+        /* 更早之前的Firefox浏览器版本 */
+        input:-moz-placeholder{
+            color :blue;
+        }
+        /* webkit系列浏览器 */
+        input::-webkit-input-placeholder{
+            color :blue;
+        }
+    </style>
+</head>
+<body>
+    <p>placeholder属性</p>
+    <input type="text" placeholder="input me">
+    <p>文本框的list属性,autocomplete属性</p>
+    <div class="list">
+        text: <input type="text" name="greeting" list="grreetings" autocomplete="on">
+        <datalist id="grreetings" style="display: none;">
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+        </datalist>
+    </div>
+    <p>pattern属性：设置正则表达式</p>
+    <form action="">
+        指定格式：<input type="text" pattern="^[0-9]{2,3}$" name=part>
+        <input type="submit">
+    </form>
+    <p>input,textarea的SelectionDirection:获取用户用鼠标选取文字时，该属性可以获取选取的方向</p>
+    <form action="">
+        <input type="text" name='text'>
+        <input type="button" value="click_me" id="SDBtn">
+    </form>
+    <div class="checkboxDiv">
+        <p>复选框具有选取，非选取，不明三种状态</p>
+        <input type="checkbox" indeterminate id='cb'>indeterminate Test
+    </div>
+    <script>
+        var page = {
+            init : function(){
+                this.bindEvent();
+            },
+            bindEvent : function(){
+                var SDBtn     = document.getElementById('SDBtn');
+                SDBtn.onclick = function(){
+                    var control   = document.forms[1]['text'],
+                        Direction = control.selectionDirection;
+                    alert(Direction);
+                }
+
+                var cb = document.getElementById('cb');
+                cb.indeterminate = true;
+                // cd.checked       = true;
+                //检测复选框状态
+                if(cb.indeterminate){
+                    alert("不明状态");
+                }
+                else if(cb.checked){
+                    alert("选取状态");
+                }
+                else{
+                    alert("非选取状态");
+                }
+
+            }
+        }
+        window.onload = page.init();
+    </script>
+</body>
+</html>

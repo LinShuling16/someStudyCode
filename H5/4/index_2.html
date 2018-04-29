@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>labels属性</title>
+</head>
+<body>
+   <form action="" id="testfrom">
+       <label for="txt_name" id="label">姓名：</label>
+       <input type="text" id="txt_name">
+       <input type="button" id="btnValidate" value="验证">
+   </form>
+   <script>
+       var page = {
+            init : function(){
+                this.bindEvent();
+            },
+            bindEvent : function(){
+                var _this = this,
+                    button  = document.getElementById('btnValidate');
+                button.onclick = function(){
+                    _this.validate();
+                }
+            },
+            validate : function(){
+                var txtName = document.getElementById('txt_name'),
+                    button  = document.getElementById('btnValidate'),
+                    form    = document.getElementById('testfrom');
+                if(txtName.value.trim() === ''){
+                    if(txtName.labels.length === 1){
+                        var label=document.createElement('label');
+                        label.setAttribute('for', 'txt_name');
+                        form.insertBefore(label,button);
+                        txtName.labels[1].innerHTML='请输入姓名';
+                        txtName.labels[1].setAttribute(
+                            "style","font-size:9px; color:red"
+                        );
+                        txtName.setAttribute(
+                            "style","border:1px solid red"
+                        )
+                    }
+                }
+                else if(txtName.labels.length>1){
+                    form.removeChild(txtName.labels[1]);
+                     txtName.setAttribute(
+                            "style","border:1px solid #ccc"
+                        )
+                }
+            }
+       }
+       window.onload = page.init();
+   </script>
+</body>
+</html>

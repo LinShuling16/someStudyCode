@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5form</title>
+</head>
+<body>
+    <div class="content">
+        <form action="" id="testfrom">
+            <input type="text">
+        </form>
+        <textarea name="" id="" cols="30" rows="10" form="textarea">表单内元素的form属性</textarea>
+
+        <p>formaction属性：将表单提交到不同的页面</p>
+        <form action="server.jsp">
+            <input type="submit" name="s1" value="v1" formaction="s1.jsp">提交到s1
+            <input type="submit" name="s2" value="v2" formaction="s2.jsp">提交到s2
+        </form>
+
+        <p>formmethod属性：对每个表单元素指定不同的提交方法</p>
+        <form action="">
+            姓名：<input type="text" name="name" formmethod="post" value="post提交方式"><br>
+            <input type="submit" value="get提交方式" frommethod="get">
+        </form>
+
+        <p>formenctype属性对表单元素分别指定不同的编码方式</p>
+        <input type="text" formenctype="multipart/form-data">
+
+        <p>formtarget属性指定提交后在何处打开所需要加载的页面</p>
+        <p>autofocus属性：页面打开后，控件自动获取光标焦点（注意：一个页面只能有一个控件具有autofocus属性）</p>
+        <input type="text" autofocus>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>

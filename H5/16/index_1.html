@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>draggable</title>
+    <style>
+       [id='dragme']{
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            background-color:#aaa;
+            user-select: none;
+            cursor:pointer;
+       }
+       [id='text']{
+            width: 300px;
+            height: 300px;
+            margin-top: 20px;
+       }
+       .border{
+            border: 1px solid #aaa;
+            border-radius:.2em;
+            box-shadow:2px 2px 3px #aaa;
+       }
+       .hide{
+            display: none;
+       }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="border" id="dragme" draggable="true">请拖放</div>
+        <div class="border" id="text"></div>
+    </div>
+    <script>
+        var page = {
+            init : function(){
+                this.draggable();
+                this.perDefault();
+            },
+            draggable : function(){
+                var source = document.getElementById('dragme'),
+                    dest   = document.getElementById('text'),
+                    dragIcon = document.createElement('img'),
+                    n      = 1;
+                dragIcon.src = '';
+                //拖放开始
+                source.addEventListener('dragstart', function(ev){
+                    //向dataTransfer追加数据
+                    var dt = ev.dataTransfer;
+                    dt.effectAllowed = 'all';
+                    dt.setData("text/plain", n);
+                    //自定义拖放图标
+                    dt.setDragImage(dragIcon, -10, -10);
+                },false);
+                //拖放结束
+                dest.addEventListener('dragend', function(ev){
+                    ev.preventDefault();
+                },false)
+                //被拖放
+                dest.addEventListener('drop', function(ev){
+                    n++;
+                    //从dataTransfer对象获取数据
+                    var dt   = ev.dataTransfer,
+                        text = dt.getData("text/plain");
+                        dest.textContent += text+'  ';
+                        //阻止默认行为(拒绝被拖放)
+                        ev.preventDefault();
+                        //阻止事件冒泡
+                        ev.stopPropagation();
+                },false)
+                //被拖放的元素在本元素范围内移动
+                //dropEffect拖放时的视觉效果/图标
+                dest.addEventListener("dragover", function(ev){
+                    var dt = ev.dataTransfer;
+                    dt.dropEffect = 'link';
+                    ev.preventDefault();
+                },false)
+            },
+            //设置页面属性，阻止默认行为
+            perDefault : function(){
+                document.ondragover = function(e){
+                    e.preventDefault();
+                }
+                document.indrop = function(e){
+                    e.preventDefault();
+                }
+            }
+        }
+        window.onload = page.init();
+    </script>
+</body>
+</html>

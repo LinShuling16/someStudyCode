@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>direction</title>
     <style>
-        
+        a{
+            text-decoration:none;
+        }     
         .content{
             width: 400px;
             height: 400px;
@@ -15,6 +17,31 @@
             width: 100px;
             height: 100px;
             border: 1px solid #ccc;
+        }
+        .confirm{
+            position: relative;
+            width: 200px;
+            height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 0.2em;
+        }
+        .btn_g{
+            position: absolute;
+            bottom:2px;
+            left: 18%;
+        }
+        .btn{ 
+            display: inline-block;
+            width: 60px;
+            height: 20px;
+            line-height: 20px;
+            text-align:center;
+            color: #fff;
+            background-color: #666;
+            border-radius:0.2em;
+        }
+        .btn.del{
+            background-color: red;
         }
     </style>
 </head>
@@ -34,13 +61,16 @@
     </div>
     <h5></h5>
     <div class="confirm">
-        <a href="javascript:;">确定</a>
-        <a href="javascript:;">取消</a>
+        <p class="btn_g">
+            <a href="javascript:;" class="btn del">取消</a>
+            <a href="javascript:;" class="btn">确定</a>
+        </p>
     </div>
-
     <div class="confirm">
-        <a href="javascript:;">确定</a>
-        <a href="javascript:;">取消</a>
+        <p class="btn_g" dir='rtl'>
+            <a href="javascript:;" class="btn del">取消</a>
+            <a href="javascript:;" class="btn">确定</a>
+        </p>
     </div>
 </body>
 </html>

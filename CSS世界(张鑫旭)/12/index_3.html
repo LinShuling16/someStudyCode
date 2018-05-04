@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>writing-mode实现点击按钮下沉效果</title>
+    <style>
+        a{
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .btn{
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 100%;
+            background-color: #888;
+            color: #fff;
+        }
+        .btn:active{
+            /*line-height: 66px;*/
+            text-indent:2px;
+        }
+        .verticle-mode{
+            writing-mode: tb-rl;
+            writing-mode: vertical-rl;
+        }
+    </style>
+</head>
+<body>
+    <h5>writing-mode原本的作用：实现文字</h5>
+    <h5>使用writing-mode及text-indent实现点击按钮下沉效果(可以用于高度不固定的按钮。)</h5>
+    <h5>对于高度固定的按钮可以直接使用line-height来控制下沉。</h5>
+    <div class="test">
+        <a href="javascript:;" class="btn verticle-mode">领</a>
+    </div>
+</body>
+</html>

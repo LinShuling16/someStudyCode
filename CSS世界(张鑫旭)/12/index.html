@@ -43,6 +43,19 @@
         .btn.del{
             background-color: red;
         }
+        .ell{
+            width: 200px;
+            white-space:nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .justifyT{
+           width: 130px;
+           height: 120px;
+           border: 1px solid #666;
+           text-align:justify;
+           direction:rtl;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +72,6 @@
         <span>the one</span>
         <span>the two</span>
     </div>
-    <h5></h5>
     <div class="confirm">
         <p class="btn_g">
             <a href="javascript:;" class="btn del">取消</a>
@@ -72,5 +84,13 @@
             <a href="javascript:;" class="btn">确定</a>
         </p>
     </div>
+    <h5>单行文字溢出用点表示：使用direction使点在左边</h5>
+    <p class="ell" dir='ltr'>开头是我，这是中间，这是结束</p>
+    <p class="ell" dir='rtl'>开头是我，这是中间，这是结束</p>
+    <h5>direction可以改变表格中列的呈现顺序。\(^o^)/~</h5>
+    <h5>direction:rtl;可以让text-justify两端对齐元素，最后一行落单的元素右对齐。</h5>
+    <div class="justifyT">
+        direction:rtl;可以让text-justify两端对齐元素，最后一行落单的元素右对齐
+    </div>        
 </body>
 </html>

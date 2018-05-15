@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用路径</title>
+</head>
+<body>
+    <p>使用路径绘制圆形——绘制圆和椭圆</p>
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <script>
+        var page = {
+            init : function(){
+                this.draw("canvas");
+            },
+            draw : function(id){
+                var canvas = document.getElementById(id);
+                if(canvas == null){
+                    return false;
+                }
+                var context = canvas.getContext('2d');
+                context.fillStyle = '#eee';
+                context.fillRect(0, 0, 400, 300);
+                var n = 0;
+                for(var i=0; i<10; i++){
+                    context.beginPath();//创建路径
+                    /*
+                        arc()绘制圆形及圆弧
+                        arc(
+                                起点横坐标，
+                                起点纵坐标，
+                                开始角度，
+                                结束角度，
+                                是否按逆时针方向进行绘制
+                            )
+                        
+                     */
+                    context.arc(i*25, i*25, i*10, 0, Math.PI*2, true);
+                     /*
+                        ellipse()绘制椭圆
+                        ellipse(
+                            起点横坐标，
+                            起点纵坐标，
+                            椭圆的横向半径， 
+                            椭圆的纵向半径，
+                            椭圆的顺时针方向旋转角度， 
+                            开始角度，
+                            结束角度，
+                            是否按逆时针方向进行绘制
+                        )
+                        
+                     */
+                    // context.ellipse(i*25, i*25, i*10, i*20, 30, 0, Math.PI*2, true);
+                    // context.closePath();//关闭路径
+                    context.fillStyle = 'rgba(225, 0, 0, 0.25)';//绘制填充样式
+                    context.fill();//fill:填充图形;
+                    context.strokeStyle = 'rgba(225, 0, 0, 0.5)';//绘制边框样式
+                    context.stroke();//stroke：绘制图形边框
+                }
+            }
+        }
+        window.onload = page.init();
+    </script>
+</body>
+</html>

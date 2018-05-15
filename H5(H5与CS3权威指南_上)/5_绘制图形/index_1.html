@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Document</title>
+        <style>
+            #canvas{
+                width: 400px;
+                height: 400px;
+            }
+            #canvas_1{
+                width: 400px;
+                height: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>在cnavas attr设置width和height——一定要设置</p>
+        <canvas id="canvas" width="400" height="400"></canvas>
+        <p>
+            attr设置的height/width，是实际有多少像素；
+            而通过css设置的height，表示显示出来的大小，并不会影响原本的像素数。
+            你的css的height和真实的height不匹配的话，就会出现scale（缩放扩大）的问题,如下：
+        </p>
+        <canvas id="canvas_1"></canvas>
+    </body>
+    <script>
+        var page = {
+            init : function(){
+               this.draw('canvas');
+               this.draw('canvas_1');
+            },
+            draw : function(id){
+                var canvas = document.getElementById(id);
+                if(canvas == null){
+                    return false;
+                }
+                var context = canvas.getContext('2d');
+                context.fillStyle = '#eee';//填充样式
+                context.fillRect(0, 0, 400,400);//绘制矩形(x,y,width,height),坐标原点是canvas画布最左上角；
+                context.fillStyle = '#ddd';
+                context.strokeStyle = '#aaa';//边框样式
+                context.lineWidth = 1;
+                context.fillRect(50, 50, 100, 100);
+                context.strokeRect(50, 50, 100, 100);//绘制边框(x,y,width,height),坐标原点是canvas画布最左上角
+            }
+        }
+        window.onload = page.init();
+    </script>
+</html>

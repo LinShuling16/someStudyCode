@@ -2,18 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>11</title>
+    <title>11_用户界面样式</title>
     <style>
-        .input{
-            outline : none;
-        }
-        .input:focus {
-            border-color:Highlight;
-        }
+    input{
+        display: block;
+        margin-top:60px;
+    }
+    /* outline设置属性 */
+     .outline_test_1{
+        outline : 1px solid blue;
+     }
+     .outline_test_2{
+        outline :0 none;
+     }
+     .outline_test_2:focus{
+        border-color: Highline;
+     }
+     /* 以下设置不好，这样的错误会造成部分厂家下的部分用户产生使用障碍*/
+    /* *{
+        outline: 0 none；
+     }
+     a{
+        outline: 0 none;
+     }*/
     </style>
 </head>
 <body>
-    <a href="https://www.baidu.com/">b</a>
-    <input type="text" class="input">
+    <p>用户界面样式：帮助用户进行界面交互的一些css样式：eg：outline and cursor</p>
+    <p>outline：元素轮廓</p>
+    <p>outline：键盘访问时，outline会在当前的focus的输入框或是a链接显示蓝色外框效果。</p>
+    <p>对于普通的链接或是按钮，用户点击的时候并不会出现蓝色边框，只有在用Tab键或是js的element
+    .focus()主动触发是才会有发光的效果。</p>
+    <div>
+        <input type="text" class="outline_test_1">
+        <input type="text" class="outline_test_2">
+        <input type="text">
+        <a href="http://www.baidu.com" id='tobaodu'>outlineTest</a>
+        <button id="btn_1">outlineTest</button>
+    </div>
+    <script>
+        var page = {
+            init : function(){
+                this.bindEvent();
+            },
+            bindEvent : function(){
+                var btn_1 = document.getElementById('btn_1');
+                btn_1.onclick = function(){
+                    var tobaodu = document.getElementById('tobaodu');
+                    //这里使用element.focus()主动触发是发光聚焦效果，但是并不会实现链接跳转。
+                    tobaodu.focus();
+                }
+            }
+        }
+        window.onload = page.init();
+    </script>
 </body>
 </html>

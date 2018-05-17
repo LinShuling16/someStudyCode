@@ -12,14 +12,18 @@
      .outline_test_1{
         outline : 1px solid blue;
      }
+     /* 
+        当输入框的outline样式与网页设计的风格有冲突时，可以进行重置，但是同时需要重置focus效果
+        如下outline_test_2：
+     */
      .outline_test_2{
         outline :0 none;
      }
      .outline_test_2:focus{
-        border-color: Highline;
+        background-color: #eee;
      }
      /* 以下设置不好，这样的错误会造成部分厂家下的部分用户产生使用障碍*/
-    /* *{
+    /* {
         outline: 0 none；
      }
      a{

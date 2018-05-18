@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11_用户界面样式_自动填满屏幕剩余空间应用技巧</title>
+    <style>
+        *{
+            margin :0;
+            padding: 0;
+        }
+        .div{
+            width: 100%;
+            text-align:center;
+        }
+        .header{
+            height: 60px;
+            background-color: #ccc;
+        }
+        .content{
+            height: 600px;
+            background-color: #eee;
+        }
+        .footer{
+            height: 60px;
+            /*background-color: #ccc;*/
+        }
+        .footer > p{
+            position: absolute;
+            left:0;
+            right: 0;
+            padding: 15px 0;
+            background-color: #a0b3d6;
+            outline: 9999px solid #a0b3d6;
+            clip: rect(0 9999px 9999px 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="div header">This is header</div>
+    <div class="div content">
+        <p>This is content</p>
+        <p>
+            这里的关键点是：
+            <ul>
+                <li>
+                    outline : 9999px solid #a0b3d6;
+                    设置一个曹发轮廓范围的outline属性，outline不能设置方位，被动地像四周扩展。
+                </li>
+                <li>
+                    position: absolute;clip: rect(0 9999px 9999px 0);
+                    让底元素绝对定位，同时以上边缘和左边缘为姐进行裁剪。
+                </li>
+            </ul>
+        </p>
+    </div>
+    <div class="div footer">
+        <p>This is footer</p>
+    </div>
+</body>
+</html>

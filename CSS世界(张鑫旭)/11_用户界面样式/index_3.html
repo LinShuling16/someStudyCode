@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11_用户界面样式_cursor</title>
+    <style>
+        /* cursor:none;
+           让光标隐藏不见。
+         */
+        /*html{
+           cursor: none; 
+           background-color: #ccc;
+        }*/
+        .btn:hover{
+            cursor: pointer;
+        }
+        .cur-none{
+            cursor: none;
+        }
+        /* 设置文字不可选注意要同时设置光标的属性不是text */
+        .no_select{
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+
+            cursor:default;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>如下：系统默认的cursor属性是cursor:default,而不是cursor:pointer
+        <input type="button" value="cursor:default" class="btn">
+        <button class="btn">cursor:default</button>
+    </div>
+    <div>
+        <p>IE8不支持cursor：none属性，IE9开始才支持。</p>
+        <p>使用场景：鼠标静止3秒不动，就设置页面或是视屏元素cursor：none；隐藏光标，如果mousemove，显示光标。</p>
+        <p>P309：兼容处理方式。</p>
+        <button class="cur-none">cursor:none</button>
+    </div>
+    <div>
+            <p><button style="cursor:pointer;">cursor:pointer</button></p>
+            <p>cursor:help;让交互细节和视觉呈现更加细腻。</p>
+            <p><button style="cursor:help;">cursor:help</button></p>
+            <p>cursor:progress;使用场景：页面加载完成，但是js由于网络问题没有加载完成，此时用户点击“更多”按钮没有反应。</p>
+            <p>解决方式：默认设置body{cursor:progress;}当js初始化完毕的时候：document.body.style.cursor：'auto';</p>
+            <p><button style="cursor:progress;">cursor:progress</button></p>
+            <p>cursor:wait;和电脑死机的光标一样，尽量不要使用，会引起用户恐慌。</p>
+            <p><button style="cursor:wait;">cursor:wait</button></p>
+            <p>cursor:content-menu;上下文菜单;这里不支持。</p>
+            <p><button style="cursor:context-menu;">cursor:context-menu</button></p>
+            <p>cursor:text;文字可被选中。</p>
+            <p><button style="cursor:text;">cursor:text</button></p>
+            <p>eg：这里的文字可选。注意光标。</p>
+            <p class="no_select">eg：这里的文字不可选。注意光标。</p>
+            <p>vertical-text;垂直选中光标。</p>
+            <p><button style="cursor:vertical-text;">cursor:vertical-text</button></p>
+            <p><button style="cursor:">cursor:</button></p>
+            <p><button style="cursor:">cursor:</button></p>
+            <p><button style="cursor:">cursor:</button></p>  
+    </div>
+</body>
+</html>

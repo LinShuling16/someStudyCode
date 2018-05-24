@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style> 
+        .hide{
+            display: none;
+        }
+        #canvas{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin:0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="hide">
+        <p>History API:管理浏览器的历史记录。</p>
+        <p>功能：</p>
+        <p>(1)不刷新页面的前提下动态地改变浏览器地址栏中的URL地址。</p>
+        <p>(2)动态修改页面上所显示资源。</p>
+        <hr>  
+        <p>使用H5 History API 在不刷新页面的前提下，通过脚本语言的方式来进行页面上某块局部内容的更新。</p> 
+        <p>步骤：</p>
+        <p>(1)ajax请求不同的局部内容，装载该内容。</p>
+        <p>(2)通过H5 History API改变URL。</p> 
+        <hr> 
+        <p>H5之前就实现的方法:</p> 
+        <p>window.history.back()</p>
+        <p>window.history.forward()</p>
+        <p>window.history.go()</p>
+        <hr>
+    </div>
+    <div>
+        <p>功能：</p>
+        <p>浏览器后退按钮：撤销</p>
+        <p>浏览器后退按钮：重绘</p>
+        <canvas id="canvas" width="400" height="300"></canvas>
+        <img src="./01.png" alt="" class='hide' id="image">
+    </div>
+    <script>
+        var page = {
+            init : function(){
+                var image  = document.getElementById('image');
+                var canvas = document.getElementById('canvas');
+                var context = canvas.getContext('2d');
+
+                var isDrawing = false;
+                var state = context.getImageData(0, 0, canvas.width, canvas.height);
+
+                history.pushState(state, null);
+
+                canvas.addEventListener("pointerdown", function(e){
+                    e.preventManipulation();
+                }, false);
+
+                canvas.addEventListener("mousedown", startDrawing, false);
+                canvas.addEventListener("mousemove", draw, false);
+                canvas.addEventListener("mouseup", stopDrawing, false);
+                canvas.addEventListener("popstate", loadState, false);
+
+                function startDrawing(){
+                    isDrawing = true;
+                }
+
+                function draw(event){
+                    if(isDrawing){
+                        var sx = canvas.width / canvas.offsetWidth;
+                        var sy = canvas.height / canvas.offsetHeight;
+                        var x = sx * event.clientX - image.naturalWidth / 2;
+                        var y = sy * event.clientY - image.naturalHeight / 2;
+                        context.drawImage(image, x, y);
+
+                    }
+                }
+
+                function stopDrawing(){
+                    isDrawing = false;
+                    var state = context.getImageData(0, 0, canvas.width, canvas.height);
+                    history.pushState(state, null);
+                }
+
+                function loadState(e){
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    if(e.state){
+                        context.putImageData(e.state, 0, 0);
+                    }
+                }
+            }
+        }
+        window.onload = page.init();
+    </script>
+</body>
+</html>

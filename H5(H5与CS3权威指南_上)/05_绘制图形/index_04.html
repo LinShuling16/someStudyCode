@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用路径绘制线性渐变</title>
+</head>
+<body>
+    <canvas width="400" height="300" id="canvas"></canvas>
+    <script>
+        var page = {
+            init : function(){
+                this.draw('canvas');
+            },
+            draw : function(id){
+                var cns = document.getElementById(id);
+                if(cns === null){
+                    return false;
+                }
+                var ctx = cns.getContext('2d');
+                var g_1 = ctx.createLinearGradient(0, 0, 0, 300);
+
+                g_1.addColorStop(0, 'rgb(255, 255, 0)');
+                g_1.addColorStop(0, 'rgb(0, 255, 255)');
+
+                ctx.fillStyle = g_1;
+
+                ctx.fillRect(0, 0, 400, 300);
+
+                var n = 0;
+
+                var g_2 = ctx.createLinearGradient(0, 0, 300, 0);
+
+                g_2.addColorStop(0, 'rgba(0, 0, 255, .5)');
+                g_2.addColorStop(1, 'rgba(255, 0, 0, .5)');
+
+                for(var i=0; i<10; i++){
+                    ctx.beginPath();
+                    ctx.fillStyle = g_2;
+                    ctx.arc( i*25, i*25, i*10, 0, Math.PI*2, true);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+
+            }
+        }
+        window.onload = page.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_魔鬼属性float</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>浮动的本质：为了实现文字环绕效果。</p>
+    </div>
+    <!--  eg_1  -->
+    <!-- <div style="width: 300px;">
+         <div style="float:left;">
+            <img src="../1.png" alt="">浮动的本质：为了实现文字环绕效果。
+            浮动的本质：为了实现文字环绕效果。
+        </div>
+    </div> -->
+    <!--  eg_2  -->
+    <div style="width: 300px;">
+         <div style="float:left;">
+            <img src="../1.png" alt="" style="opacity: .3;">
+        </div>
+    </div>
+    <p style="background-color: #ccc;margin-left: -200px;">浮动的本质：为了实现文字环绕效果。</p>
+    <p>浮动的本质：为了实现文字环绕效果。</p>
+    <p>浮动的本质：为了实现文字环绕效果。</p>
+    <p>浮动的本质：为了实现文字环绕效果。</p>
+    <p>浮动的本质：为了实现文字环绕效果。</p>
+    <p>浮动的本质：为了实现文字环绕效果。</p>
+    <hr style="clear: both;">
+    <div>
+        <p>float的特性：</p>
+        <p>1.包裹性。</p>
+        <p>2.块状化并格式化上下文。</p>
+        <p>3.破坏文档流。</p>
+        <p>4.没有任何margin合并。</p>
+    </div>
+    <hr>
+    <div style="height: 400px;width: 400px;background-color:#999;text-align: center; overflow: hidden;">
+        <span style="float:left;height:40px;width:200px;background:#ccc;" >this is test</span>
+    </div>
+    <hr style="clear: both;">
+    <div style="background-color: #C3DEB8;">
+        <p >注意 ：如eg_2</p>
+        <p>实现环绕效果的的重要原因之一是：行框盒子和浮动元素是不可以重叠的。</p>
+        <p>也就是：行框盒子如果和浮动远古三的垂直高度有重叠，则行框盒子在正常定位状态下只会跟随浮动元素。</p>
+    </div>
+</body>
+</html>

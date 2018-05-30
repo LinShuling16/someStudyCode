@@ -49,7 +49,36 @@
     <div style="background-color: #C3DEB8;">
         <p >注意 ：如eg_2</p>
         <p>实现环绕效果的的重要原因之一是：行框盒子和浮动元素是不可以重叠的。</p>
-        <p>也就是：行框盒子如果和浮动远古三的垂直高度有重叠，则行框盒子在正常定位状态下只会跟随浮动元素。</p>
+        <p>也就是：行框盒子如果和浮动元素的垂直高度有重叠，则行框盒子在正常定位状态下只会跟随浮动元素。</p>
+    </div>
+    <hr>
+    <div>
+        <p>注意：一旦浮动元素垂直区域超过父元素设置的高度范围，或者是下面元素的margin-top负值上偏移，就可能使后面的元素发生“环绕效果”</p>
+        <p style="background-color: #C3DEB8;">注意：内联状态下的图片底部是有间隙的。</p>
+        <div class="father">
+            <div class="float">
+                 <img src="../1.png" alt="">
+            </div>
+            实现环绕效果的的重要原因之一是：行框盒子和浮动元素是不可以重叠的。
+        </div>
+        <div>行框盒子如果和浮动元素的垂直高度有重叠，则行框盒子在正常定位状态下只会跟随浮动元素。</div>
+        <style>
+            .father{
+                height: 64px;
+                border: 1px solid #444;
+            }
+            .float{
+                float: left;
+            }
+            .float img{
+                width: 60px;
+                height: 64px;
+            }
+        </style>
+    </div>
+    <hr>
+    <div>
+        
     </div>
 </body>
 </html>

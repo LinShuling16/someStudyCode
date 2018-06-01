@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_最佳结界overflow</title>
+    <style>
+        /* 以下设置可以去除页面默认滚动条 */
+        /*  html{
+            overflow: hidden;
+        }*/
+    </style>
+</head>
+<body>
+    <h3>注意:padding-bottom问题：</h3>
+    <h4>在Chrome浏览器下，如果垂直滚动，则padding-bottom也算在滚动尺寸内。</h4>
+    <h4>IE和Firefox浏览器则忽略padding-bottom。</h4>
+    <div style="width:100px; height:100px; overflow: auto; background-color:#eee; padding-bottom:20px; margin:100px;"> 
+        overflow经典不兼容问题overflow经典不兼容问题overflow经典不兼容问题overflow经典不兼容问题
+        overflow经典不兼容问题overflow经典不兼容问题overflow经典不兼容问题.
+    </div>
+    <h3>作者认为：开发中要尽量避免为滚动容器设置padding-bottom值，除了样式表现不一致外，还有导致scrollHeight值不一样，这往往会给开发带来难以察觉的麻烦。</h3>
+    <hr>
+    <div>
+       <h3></h3> 
+    </div>
+     <hr>
+    <div>
+        <h3>overflow与滚动条</h3>
+        <p>(1)在PC端，不论是什么浏览器，默认滚动条均来自"html"标签，而不是"body"标签</p>
+        <p>在PC端，窗体滚动高度可以使用document.documentElement.scrollTop获取，但是在移动端，可能要使用document.body.scrollTop获取。</p>
+        <p>(2)滚动条会占据容器的可用宽度或是高度。(17px)</p>
+        <p>但是在移动端不会有这个问题，因为移动端滚动条一般都是悬浮模式。</p>
+    </div>
+    <div>
+        <h3>获取浏览器的滚动栏宽度</h3>
+        <div class="box">
+            <div id="in" class="in"></div>
+        </div>
+    </div>
+    <style>
+        .box{
+            width: 400px;
+            overflow: scroll;
+        }
+    </style>
+    <script>
+        console.log(400- document.getElementById('in').clientWidth);//17
+    </script>
+    <hr>
+</body>
+</html>

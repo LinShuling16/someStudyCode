@@ -8,6 +8,21 @@
         /*  html{
             overflow: hidden;
         }*/
+        /* 页面不晃动技巧 */
+        html{
+            overflow-y:scroll;/* for IE8*/
+        }
+        :root{
+            overflow-y: auto;
+            overflow-x:hidden;
+        }
+        :root body{
+            position: absolute;
+        }
+        body{
+            width: 100vw;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -21,7 +36,8 @@
     <h3>作者认为：开发中要尽量避免为滚动容器设置padding-bottom值，除了样式表现不一致外，还有导致scrollHeight值不一样，这往往会给开发带来难以察觉的麻烦。</h3>
     <hr>
     <div>
-       <h3></h3> 
+       <h3>了解overflow-x和overflow-y</h3> 
+       <p>如果overflow-x和overflow-y属性中的一个值被设置为visible而另一个值设置为scroll，auto或是hidden，则visible的表现会如同auto。</p>
     </div>
      <hr>
     <div>
@@ -47,5 +63,25 @@
         console.log(400- document.getElementById('in').clientWidth);//17
     </script>
     <hr>
+    <div>
+        <h3>滚动栏占据宽度特性最大的问题是页面加载的时候水平居中的布局可能会发生晃动，因为窗体本来是没有滚动条的。</h3>
+        <p>页面不晃动的技巧：</p>
+        <pre>
+            html{
+                overflow-y:scroll;/* for IE8*/
+            }
+            :root{
+                overflow-y: auto;
+                overflow-x:hidden;
+            }
+            :root body{
+                position: absolute;
+            }
+            body{
+                width: 100vw;
+                overflow: hidden;
+            } 
+        </pre>
+    </div>
 </body>
 </html>

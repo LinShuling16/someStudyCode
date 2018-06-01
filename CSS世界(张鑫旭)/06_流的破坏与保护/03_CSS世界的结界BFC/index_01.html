@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03_CSS世界的结界BFC</title>
+    <style>
+        .inlineBlock{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: #eee;
+            margin:20px;
+        }
+        .div{
+           width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            margin:20px; 
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>注意:这里margin不重叠。</h3>
+        <span class="inlineBlock"></span>
+        <br>
+        <span class="inlineBlock"></span>
+    </div> 
+    <hr>
+    <div>
+       <h3>注意:这里margin重叠了。</h3>
+       <div class="div"></div>
+       <div class="div"></div> 
+    </div>
+</body>
+</html>

@@ -43,6 +43,31 @@
         <p>“URL地址锚链定位”是让元素定位在浏览器窗体的上边缘，而“focus锚点定位”是让元素在浏览器窗体范围内显示即可，不一定在上边缘。</p>
     </div>
 
+    <hr>
+    <div>
+        <h3>锚点定位的本质</h3>
+        <p>锚点定位的本质是通过改变容器滚动高度或者是宽度来实现的。(即改变了scrollTop 或是scrollLeft。)</p>
+
+        <div class ="box">
+            <div class="content"></div>
+            <h4 id="title">底部标题</h4>
+        </div>
+        <p><a href="#title">点击测试</a></p>
+        <h4>注意：元素设置了overflow:hidden声明，里面内容高度溢出的时候，滚动依然存在，仅仅是滚动条不存在。</h4>
+        <style>
+            .box{
+                height: 120px;
+                border: 1px solid #bbb;
+                overflow: auto;
+                /*overflow: hidden;*/
+            }
+            .content{
+                height: 200px;
+                background-color: #eee;
+            }
+        </style>  
+    </div>
+
     <div style="width: 200px; height: 1000px;background-color: #eee;"></div>
     <a name="2" style="background-color: #0055ff;">发展历史发展历史发展历史发展历史发展历史</a>
     

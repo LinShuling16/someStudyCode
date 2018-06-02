@@ -83,5 +83,34 @@
             } 
         </pre>
     </div>
+    <hr>
+    <div>
+        <h3>依赖overflow的样式表现</h3>
+        <div>
+            <h4>单行文本文字溢出点点点效果</h4>
+            <pre>
+                .ell{
+                    text-overflow : ellipsis;
+                    white-space   : nowrap;
+                    overflow      : hidden;
+                }
+                这里三个声明，缺一不可。
+            </pre>
+            <p style="width: 200px; border:1px solid #ccc; text-overflow: ellipsis; white-space:nowrap;overflow: hidden;">单行文本文字溢出点点点效果单行文本文字溢出点点点效果单行文本文字溢出点点点效果</p>
+        </div>
+        <hr>
+        <div>
+            <h3>IE浏览器和火狐浏览器以下多行文字打点效果无效。</h3>
+            <h4>多行文字打点效果(对-webkit-私有前缀支持良好的浏览器)</h4>
+            <p style="width: 200px; border:1px solid #ccc; display: -webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:2; overflow: hidden;">多行文字打点效果多行文字打点效果多行文字打点效果多行文字打点效果多行文字打点效果多行文字打点效果</p>
+
+            <h4>不加overflow: hidden的效果</h4>
+            <p style="width: 200px; border:1px solid #ccc; display: -webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:2;">多行文字打点效果多行文字打点效果多行文字打点效果多行文字打点效果多行文字打点效果多行文字打点效果</p>
+        </div>
+    </div>
+    <hr>
+    <div>
+        
+    </div>
 </body>
 </html>

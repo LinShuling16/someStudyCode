@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_最佳结界overflow</title>
+</head>
+<body>
+    <h3>浏览器锚点定位实现选项卡切换效果</h3>
+    <h4>这样实现的不足是:</h4>
+    <p>(1)容器高度需要固定。</p>
+    <p>(2)如果页面是可以滚动的，“由内向外”的锚点定位会触发窗体的重定位。</p>
+    <div class="box_1">
+        <div class="list_1" id="one_1">1</div>
+        <div class="list_1" id="two_1">2</div>
+        <div class="list_1" id="three_1">3</div>
+        <div class="list_1" id="four_1">4</div>
+    </div>
+    <div class="link_1">
+        <a class="click_1" href="#one_1">1</a>
+        <a class="click_1" href="#two_1">2</a>
+        <a class="click_1" href="#three_1">3</a>
+        <a class="click_1" href="#four_1">4</a>
+    </div>
+     <style>
+        .box_1{
+            height: 10em;
+            width: 10em;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+        .list_1{
+            line-height: 10em;
+            text-align: center;
+            background-color: #ddd;
+        }
+    </style>
+    <div style="width: 100px;height: 800px;background-color: #eee;"></div>
+    
+    <hr>
+    <div style="margin-bottom: 100px;">
+        <h3>基于“foucs锚点定位”实现无js的选项卡切换效果</h3>
+        <div class="box_2">
+            <div class="list_2"><input id="one_2">1</div>
+            <div class="list_2"><input id="two_2">2</div>
+            <div class="list_2"><input id="three_2">3</div>
+            <div class="list_2"><input id="four_2">4</div>
+        </div>
+        <div class="link_2">
+            <label class="click_2" for="one_2">1</label>
+            <label class="click_2" for="two_2">2</label>
+            <label class="click_2" for="three_2">3</label>
+            <label class="click_2" for="four_2">4</label>
+        </div>
+        <div>
+            <h4>这种实现技术想要用在实际项目中还是需要js的支持来修复两个问题。</h4>
+            <p>(1)选项卡按钮的选中效果。</p>
+            <p>(2)处理列表部分区域在浏览器外面事依然跳动的问题。</p>
+            <h4>使用jQ实现如下：</h4>
+            <pre>
+                $('label.click').removeAttr('for').on('click',function(){
+                    $('.box').scrollTop(xxx); //"xxx"表示滚动数值
+                })  
+            </pre>
+        </div>
+        <style>
+            .box_2{
+                height: 10em;
+                width: 10em;
+                border: 1px solid #ddd;
+                overflow: hidden;
+            }
+            .list_2{
+                height: 100%;
+                position: relative;
+                text-align: center;
+                background-color: #ddd;
+            }
+            .list_2 > input{
+                position: absolute;
+                top:0;
+                height: 100%;
+                width: 1px;
+                border: 0;
+                padding: 0;
+                margin:0;
+                clip: rect(0 0 0 0);
+            }
+            .link_2 .click_2{
+                font-size: 12px;
+                display: inline-block;
+                margin-top: 10px;
+                padding: 4px 10px;      
+                background-color: #eee;
+                border: 1px solid #ccc;
+                cursor: pointer; 
+            }
+            .link_2 .click_2:hover{
+                background-color: #ddd;
+            }
+        </style>   
+    </div>
+</body>
+</html>

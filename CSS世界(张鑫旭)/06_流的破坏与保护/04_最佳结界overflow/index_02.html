@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_最佳结界overflow</title>
+</head>
+<body>
+    <h3>overflow与锚点定位</h3>
+    <div>
+        <h3>实现锚点跳转的两种方法：</h3>
+        <pre>
+            （1）<a>标签以及name属性
+             <a href="#1">发展历史</a>
+             <a name="1">发展历史发展历史发展历史发展历史发展历史</a>
+        </pre>
+        <pre>
+            （1）<a>标签的id属性
+             <a href="#3">发展历史</a>
+             <p id="3">发展历史发展历史发展历史发展历史发展历史</a>
+        </pre>
+        <a href="#2">点击定位“发展历史1”</a>
+        <br>
+        <a href="#4">点击定位“发展历史2”</a>
+    </div>
+
+    <hr>
+    <div>
+        <h3>锚点定位行为的触发条件</h3>
+        <p>(1)URL地址中的锚链与锚点元素对应并有交互行为。</p>
+        <p>(2)可focus的锚点元素处于focus状态。</p>
+        <button type="button" id="btn_1">inputFocus</button>
+        <script>
+            var btn = document.getElementById('btn_1');
+            btn.onclick = function(){
+               alert('这里用js触发input focus事件,要定位到input啦')
+               document.querySelector('input').focus();
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>这两种定位的差异：</h3>
+        <p>“URL地址锚链定位”是让元素定位在浏览器窗体的上边缘，而“focus锚点定位”是让元素在浏览器窗体范围内显示即可，不一定在上边缘。</p>
+    </div>
+
+    <div style="width: 200px; height: 1000px;background-color: #eee;"></div>
+    <a name="2" style="background-color: #0055ff;">发展历史发展历史发展历史发展历史发展历史</a>
+    
+    <div>
+        <input type="text">
+    </div>
+
+    <div style="width: 200px; height: 1000px;background-color: #eee;"></div>
+    <p id="4" style="background-color: #00dddd;">发展历史发展历史发展历史发展历史发展历史</a>
+
+    <hr>
+    <a href="#">回到顶部</a>
+</body>
+</html>

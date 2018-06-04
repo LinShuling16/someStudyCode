@@ -21,6 +21,30 @@
 </head>
 <body>
     <div>
+        <h3>BFC</h3>
+        <h4>BFC:块级格式上下文。</h4>
+        <p>表现原则:如果一个元素具有BFC,则不论内部子元素如何改变，也不会影响外部元素。</p>
+        <h4>BFC元素不可能发生margin重叠。</h4>
+    </div>
+    <hr>
+    <div>
+        <h3>触发BFC的情况：</h3>
+        <p>(1)html根元素。</p>
+        <p>(2)float的值部位none。</p>
+        <p>(3)overflow的值为auto，scroll,或是hidden。</p>
+        <p>(4)display的值table-cell，table-caption和inline-block中的任何一个。</p>
+        <p>(5)position的值不为relative和static。</p>
+    </div>
+    <hr>
+    <h4>BFC自适应布局有点</h4>
+    <p>(1)自适应内容由于封闭性而更加强壮，容错性更强。eg：内部设置clear：both不会与float元素相互干扰而导致错位。</p>
+    <p>(2)自适应内容自动填满浮动以外区域，无须关心浮动元素高度，可以整站大规模应用。</p>
+    <div style="width: 300px; border:1px solid #ccc;">
+        <img src="../1.png" alt="" style="width: 100px; height: 100px; float:left; margin-right: 10px;">
+        <p style="overflow: hidden;">表现原则:如果一个元素具有BFC,则不论内部子元素如何改变，也不会影响外部元素。表现原则:如果一个元素具有BFC,则不论内部子元素如何改变，也不会影响外部元素</p>
+    </div>
+    <hr>
+    <div>
         <h3>注意:这里margin不重叠。</h3>
         <span class="inlineBlock"></span>
         <br>
@@ -33,6 +57,6 @@
        <div class="div"></div> 
     </div>
     <hr>
-
+    
 </body>
 </html>

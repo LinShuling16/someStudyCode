@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05_float的兄弟position:absolute;</title>
+</head>
+<body>
+    <h5>absolute与float一起使用：float失效。</h5>
+    <pre>
+        .brother{
+            position:absolute;
+            float:left;    //失效
+        }
+    </pre>
+    <hr>
+    <h5>注意position:absolute;"块状化"</h5>
+    <p>元素一旦设置position属性设置为absolute或是fixed，其display属性值就是block或是tabal。</p>
+    <hr>
+    <h5>position:absolute;具有"包裹性"，也就是尺寸包裹，同时具有自适应性。</h5>
+    <pre>
+        .wrap{
+            display : inline-block; //没有必要
+            position:absolute;
+        }
+    </pre>
+    <hr>
+    <h5>absolute的包含块</h5>
+    <p>普通元素的百分比宽度：相对于父元素的content box宽度计算的。</p>
+    <p>绝对元素的百分比宽度：相对于第一个position不为static的祖先元素计算的。</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03_01_块级元素</title>
+</head>
+<body>
+   <h3>块级元素的基本特征：在水平流上只能单独显示一个元素。(不等同于display:block;)</h3> 
+   <pre>    
+        li    -> display : list-item;
+        table -> display : table; 
+   </pre>
+   <hr> 
+   <h3>块级元素的换行特性可以配合clear属性来清除浮动带来的影响。</h3>
+   <pre>    
+        .clear:after{
+            content: '';
+            display: table;//block, list-item
+            clear  : both;
+        }
+   </pre>
+   <h4>注意：使用display:list-item;在IE浏览器下存在兼容问题：IE浏览器不支持伪元素的display值为list-item;</h4>
+   <hr> 
+   <h3>为什么list-item元素会出现项目符号？</h3>
+   <p> list-item元素会出现项目符号是因为生成了一个附加盒子，名为“标记盒子”，专门用来实现圆点，数字这些项目符号。IE浏览器下伪元素不支持list-item <em>或许</em>就是无法创建这个盒子导致的。</p>
+   <hr> 
+   <h3> 
+        display:inline-block;是由外在的“内联盒子”，和内在“块级容器盒子”组成。
+   </h3>
+   <hr> 
+   <h3>我们平常设置的width/height属性是作用在内在盒子，也就是“容器盒子”。</h3>
+</body>
+</html>

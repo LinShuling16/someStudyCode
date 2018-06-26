@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+</head>
+<body>
+   <script>
+        window.onload = function(){
+            /*
+                01
+
+             */
+            //菲波那切数列:已知斐波那契中的第一个数字是1，第二个是2，从第3个开始，每一项都等于前两项的和。
+            var fibonacci = [];
+            //注意这里是从下标1开始。
+            fibonacci[1] = 1;
+            fibonacci[2] = 2;
+            for(var i=3; i<=20; i++){
+                fibonacci[i] = fibonacci[i-2] + fibonacci[i-1];
+            }
+
+            // for(var i=1; i<=20; i++){
+            //     console.log(fibonacci[i]);
+            // }
+
+            //打印出斐波那契的前20位
+            console.log(fibonacci);
+
+            /*
+            
+                02-添加元素(push)
+
+             */
+            var a01 = [1,2,3];
+            a01[a01.length] = 4;
+            console.log(a01);//[1, 2, 3, 4]
+
+            a01.push(5);
+            console.log(a01);
+            a01.push(6,7);//[1, 2, 3, 4, 5]
+            console.log(a01);//[1, 2, 3, 4, 5, 6, 7]
+
+            /*
+                03-插入元素到首位(unshift)
+
+             */
+            
+            var a01 = [1,2,3];
+            for(var i=a01.length; i>0; i--){
+                    a01[i] = a01[i-1];
+            }
+            a01[0] = 0;
+            console.log(a01);//[0, 1, 2, 3]
+
+            a01.unshift(-1);
+            console.log(a01);//[-1, 0, 1, 2, 3]
+            a01.unshift(-3, -2);
+            console.log(a01);// [-3, -2, -1, 0, 1, 2, 3]
+
+            /*
+                
+                04-删除元素(pop,shift)
+
+             */
+            //pop:  删除数组靠后的元素
+            //shift: 删除数组靠前的元素
+            
+
+            a01.pop();
+            console.log(a01);//[-3, -2, -1, 0, 1, 2]
+            a01.shift();
+            console.log(a01);//[-2, -1, 0, 1, 2]
+
+            a01 = [-3, -2, -1, 0, 1, 2, 3];
+            for(var i=0; i<a01.length; i++){
+                a01[i] = a01[i+1];
+            }
+            console.log(a01);//[-2, -1, 0, 1, 2, 3, undefined]
+            a01.length = a01.length -1;
+            console.log(a01);// [-2, -1, 0, 1, 2, 3]
+
+            //通过push和pop方法，可以用数组来模拟栈数据结构。
+            //通过shift和unshift方法，可以用数组来模拟队列数据结构。
+        
+
+            /*
+            
+                05-在任意位置添加或是删除元素(splice)
+                splice(index, delItemNum, addItem)
+                index      : 表示想要删除或是插入元素的索引值。
+                delItemNum : 删除元素的个数。
+                addItem    : 要添加到数组里的元素值。
+
+             */
+            
+            //splice：指定位置/索引，删除相应位置和数量的元素。
+             a01 = [-3, -2, -1, 0, 1, 2, 3];
+             a01.splice(1,2);//删除从index是1开始的2个元素，即a01[1], a01[2]
+             console.log(a01);//[-3, 0, 1, 2, 3]
+
+            //使用delete操作符删除数组中的元素，实际等同于将相应的元素置为undefined??这里是empty。
+            delete a01[0];
+            console.log(a01);// [empty, 0, 1, 2, 3]
+
+            a01[1] = undefined;
+            console.log(a01);// [empty, undefined, 1, 2, 3],注意这里empty和undefined是不一样的。
+
+            //在相应位置添加元素
+            a01 = [-3, -2, -1, 0, 1, 2, 3];
+            a01.splice(1,3);//删除从index为1开始的三个元素
+            console.log(a01);//[-3, 1, 2, 3]
+            a01.splice(1,0,-2,-1,0);//从index是1开始的位置，删除0个元素，插入三个元素，分别是-2, -1, 0。
+            console.log(a01);//[-3, -2, -1, 0, 1, 2, 3]
+
+            /*
+             
+               06-JavaScript的数组方法     
+                
+            */
+           
+           //concat-数组合并，连接两个或是更多数组，并返回结果。
+           
+            var a = [0,1,2];
+            var b = [3,4,5];
+            console.log(a.concat(b));//[0, 1, 2, 3, 4, 5]
+            console.log(b.concat(a));//[3, 4, 5, 0, 1, 2]
+            console.log(a.concat(b,6,7));//[0, 1, 2, 3, 4, 5, 6, 7]
+            console.log(a.concat(b,[6,7]));//[0, 1, 2, 3, 4, 5, 6, 7]
+
+
+            //迭代器函数
+            
+            //eg:有一个数组，值是从1到15，如果数组里的元素可以被2整除(偶数)，韩式就返回true，否则返回false。
+            
+
+            var numbers = [];
+            for(var i=0; i<15; i++){
+                numbers[i] = i+1;
+            }
+            console.log(numbers);
+
+            var isEven = function(x){
+                console.log(x);
+                //如果是2的倍数，就返回true，否则false
+                return (x%2 === 0) ? true:false;
+            }
+
+            //1.用every方法迭代：every方法会迭代数组中的每个元素，直到放回false。
+            console.log("这里使用every方法迭代。数组numbers的第一个元素是1，是奇数，因此isEvent函数 返回false，然后every执行结束。")
+            numbers.every(isEven);
+
+            //2.用some方法迭代：some方法会迭代数组中的每一个元素，直到函数返回true。
+            console.log("这里使用some方法迭代。数组numbers的第二个元素是2，是偶数，因此isEvent函数返回true，然后some执行结束。")
+            numbers.some(isEven);
+
+            //3.forEach迭代整个数组
+            numbers.forEach(isEven);
+
+            //4.使用map和filter方法：会返回新数组的遍历方法。
+            //map():会依照给定函数对值进行映射。
+            var myMap = numbers.map(isEven);
+            console.log(myMap);//[false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+
+            //filter()-返回的新数组由函数返回true的元素组成。
+            var evenNumbers = numbers.filter(isEven);
+            console.log(evenNumbers);
+            
+            //5.使用reduce方法：reduce方法接收一个函数作为参数，该函数有四个参数：previousValue，currentValue， index， array。该函数会返回一个将被叠加到累加器的值，reduce方法停止执行后会返回这个累加器。
+            //对一个数组求和很方便。
+            var arrSum = numbers.reduce(function(percious, current, index){
+                return percious + current;
+            })
+            console.log(arrSum);//120
+            
+    
+        }
+   </script> 
+</body>
+</html>

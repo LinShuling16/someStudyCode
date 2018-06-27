@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>栈</title>
+</head>
+<body>
+    <script>
+        //创建栈
+        function Stack (){
+            // 用数组来存放栈里的元素
+            let items =[];
+            //添加一个或是几个新元素到栈顶
+            this.push =function(element){
+                items.push(element);
+            };
+            //移除栈顶元素，同时返回移除的元素
+            this.pop =function(){
+                return items.pop();
+            };
+            //返回栈顶的元素，不对栈做任何修改，只是返回它。
+            this.peek =function(){
+                return items[items.length -1];
+            };
+            //如果栈里没有任何元素返回true;否则返回false
+            this.isEmpty =function(){
+                return items.length === 0;
+            };
+            //移除栈里的所有元素
+            this.clear =function(){
+                items = [];
+            };
+            //返回栈里元素的个数
+            this.size =function(){
+                return items.length;
+            };
+            //打印栈内的元素
+            this.print = function(){
+                console.log(items);
+            };
+        }
+
+        //使用ES6声明Stack类~~~~~~~~~~~~~~~~~~
+        //这里断层~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        class StactES6{
+            constructor(){
+               this.items = [];
+            } 
+            push(element){
+                this.items.push(element);
+            }
+        }
+
+        //栈的应用
+        //1.进制转换-十进制到二进制
+        function divdeBy2(decNumber){
+            var remStack = new Stack();
+            var rem;
+            var binaryString ='';
+
+            while(decNumber > 0){
+                rem = Math.floor(decNumber % 2);
+                remStack.push(rem);
+                decNumber = Math.floor(decNumber / 2);
+            }
+
+            while(!remStack.isEmpty()){
+                binaryString += remStack.pop().toString();
+            }
+
+            console.log(binaryString);
+            return binaryString;
+        }
+
+        //2.十进制转换为其他进制
+        function baseConverter(decNumber, base){
+            var remStack = new Stack();
+            var rem;
+            var baseString = '';
+            var digits = '0123456789ABCDEF';
+
+            while(decNumber > 0){
+                rem = Math.floor(decNumber % base);
+                remStack.push(rem);
+                decNumber = Math.floor(decNumber / base);
+            }
+            while(!remStack.isEmpty()){
+                baseString += digits[remStack.pop()];
+            }
+
+            console.log(baseString);
+            return baseString;
+
+        }
+
+        window.onload = function(){
+            //使用栈
+            let stack = new Stack();
+            //是否为空
+            console.log(stack.isEmpty());//true
+            //添加元素
+            stack.push(1); 
+            stack.push(6);
+            stack.push(7);
+            //输出
+            stack.print();//[1, 6, 7]
+            //获取栈顶元素
+            console.log(stack.peek());//7
+            //是否为空
+            console.log(stack.isEmpty());//false
+            //移除栈顶元素
+            console.log(stack.pop());//7
+            //输出
+            stack.print();//[1, 6]
+            //栈内元素个数
+            console.log(stack.size());//2
+            //清除栈内元素
+            stack.clear();
+            //输出
+            stack.print();//[]
+            //是否为空 
+            console.log(stack.isEmpty());//true
+
+            //进制转换-十进制到二进制
+            divdeBy2(8);//1000
+            divdeBy2(255);//11111111
+
+            baseConverter(11,16);//B
+
+        }
+    </script>
+</body>
+</html>

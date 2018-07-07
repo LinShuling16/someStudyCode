@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象</title>
+</head>
+<body>
+    <script>
+        /*
+           类的声明
+         */
+        function Animal(){
+            this.name = 'name';
+        }
+        /*
+            ES中class的声明
+         */
+        class Animal2 {
+            constructor(){
+                this.name = name;
+            }
+        }
+        /*
+            实例化
+         */
+        console.log(new Animal(), new Animal2());
+        /*
+            没有参数的时候，括号可以省略
+         */
+        console.log(new Animal, new Animal2);
+
+    </script>
+</body>
+</html>

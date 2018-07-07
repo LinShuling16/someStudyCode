@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+    <script>
+        //1-字面量的方式创建对象
+        var o1 = {
+            name : 'o1'
+        };
+
+        var o2 = new Object({
+            name : 'o2'
+        })
+
+        //2-构造函数的方式创建对象
+        var M = function(name){
+            this.name = name;
+        }
+        var o3 = new M('o3');
+
+        //3-通过Object.create方法创建对象
+        var P = {
+            name : 'P'
+        }
+        var o4 = Object.create(P);
+
+
+        //原型，构造函数，实例，原型链
+        //M为构造函数
+        console.log(M);//ƒ (name){this.name = name;}
+        //o3是实例
+        console.log(o3);//M {name: "o3"}name: "o3"__proto__: Object
+        //M的prototype属性
+        console.log(M.prototype);//{constructor: ƒ}constructor:ƒ (name)__proto__:Object
+
+        console.log(M.prototype.constructor === M);//true
+
+        //即每个函数都有一个prototype属性，prototype属性的值是一个对象(即原型对象)，这个对象有一个默认的属性constructor,constructor的值指向这个函数(M).
+        
+        //实例有一个__proto__属性指向的构造函数的prototype属性(即构造函数的原型对象)
+        console.log(o3.__proto__ === M.prototype);//true
+
+
+        M.prototype.say = function(){
+            console.log("hello world!");
+        }
+        //通过原型链的方式找到原型对象，原型对象上面的方法是被不同的实例所共同的。
+        var o5 = new M('o5');
+
+        //只有函数(?构造函数)有prototype属性，只有实例有__proto__属性，函数也有__proto__属性是因为函数是Function对象的实例。
+        
+       console.log(M.__proto__ === Function.prototype);//true
+
+       //new运算符的工作原理
+       var new2 = function(func){
+            var o = Object.create(func.prototype);
+            var k = func.call(o);
+            if(typeof k === 'object'){
+                return k;
+            }else{
+                return o;
+            }
+       }
+
+       var o6 = new2(M);
+       console.log(o6 instanceof M);//true
+       console.log(o6 instanceof Object);//true
+
+       console.log(o6.__proto__.constructor === M);//ture
+       console.log(o6.__proto__.constructor === Object);//false
+    </script>
+</body>
+</html>

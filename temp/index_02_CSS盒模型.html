@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS盒模型</title>
+    <style>
+        html *{
+            padding: 0;
+            margin :0;
+        }
+    </style>
+</head>
+<body>
+   <section id="sec">
+       <style>
+            #sec{
+                background: #eee;
+                /*overflow: hidden;*/
+            }
+            .child{
+               height: 100px;
+               margin-top : 10px;
+               background: #ccc;
+            }
+       </style>
+       <article class="child">
+       </article>
+   </section> 
+
+   <!-- BFC垂直方向边距重叠 -->
+   <section id="margin">
+       <style>
+           #margin{
+            background: #ccc;
+            overflow: hidden;
+           }
+           #margin p{
+             margin: 5px auto 25px;
+             background: #eee;
+           }
+       </style>
+       <p>1</p>
+       <div style="overflow: hidden;">
+           <!-- <p>这里给2创建BFC使其在垂直方向边距不重叠。</p> -->
+           <p>2</p>
+       </div>
+       <p>3</p>
+   </section>
+
+   <!-- BFC不与浮动float元素box重叠 -->
+   <section id="layout">
+       <style>
+            #layout{
+               background: #666;
+            }
+            #layout .left{
+               float: left;
+               width: 100px;
+               height: 100px;
+               background: #ccc;
+            }
+            #layout .right{
+                height: 110px;
+                background: #eee;
+                /*这里为右边的元素创建了BFC*/
+                overflow: auto;
+            }
+       </style>
+       <div class="left"></div>
+       <div class="right"></div>
+   </section>
+
+   <!-- 处理子元素浮动，父元素高度塌陷问题——BFC在计算高度时，浮动子元素的高度会参与计算。 -->
+   <section id="float">
+       <style>
+           #float{
+              background: #ccc;
+              /*float: left;*/
+              overflow: hidden;
+           }
+           #float .float{
+              float: left;
+           }
+       </style>
+       <div class="float">这里是浮动元素</div>
+   </section>
+
+</body>
+</html>

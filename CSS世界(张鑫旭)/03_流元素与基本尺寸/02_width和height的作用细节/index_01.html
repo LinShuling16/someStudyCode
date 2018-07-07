@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03_02_width/height作用的具体细节</title>
+    <style>
+        table {
+            width: 280px;
+            margin: 0 auto;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h3>width:auto;4种不同的宽度表现</h3>
+    <p>(1)充分利用可用空间，div等元素的宽度默认是100%于父级容器。</p>
+    <p>(2)收缩于包裹。</p>
+    <p>(3)收缩到最小。</p>
+    <p>(4)超出容器限制。</p>
+    <p>min-content:如下,当每一列空间都不够的时候，文字能断就断，但中文不能随便断，英文单词不能断，所以第一列被每个字都断掉。</p>
+    <table  border="1">
+        <tr>
+            <td>就1列就1列就1列就1列就1列</td>
+            <td>当父级relative，且宽度很小的时候，例如{position:relative; width:20px;}，absolute元素也会出现一柱擎天的情况；</td>
+            <td>当父级relative，且宽度很小的时候，例如{position:relative; width:20px;}，absolute元素也会出现一柱擎天的情况；</td>
+        </tr>
+    </table>
+    <hr>
+    <a href="javascript:;" title="hhhhh">hhhh</a>
+</body>
+</html>
